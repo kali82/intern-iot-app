@@ -1,0 +1,278 @@
+[
+    {
+        "id": "f6f2187d.f17ca8",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "2783036ae80f009b",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "192.168.8.102",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "f9c3a757ebc05ca9",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "127.0.0.1",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "2069fd5d2c7a8a11",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 780,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "a5d9c47d1b0c2c6c",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "mqtt",
+        "topic": "ZG/DR_MA/PLC/0/Temperature",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "2783036ae80f009b",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 270,
+        "y": 320,
+        "wires": [
+            [
+                "6fd96d973cb1b42a"
+            ]
+        ]
+    },
+    {
+        "id": "fab64225a30b61a9",
+        "type": "mqtt out",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "ZG/DR_MA/PLC/0/Temperature",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "2783036ae80f009b",
+        "x": 1090,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "36f458f4db69a481",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [
+            {
+                "p": "test",
+                "v": "",
+                "vt": "date"
+            },
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "99",
+        "payloadType": "num",
+        "x": 550,
+        "y": 480,
+        "wires": [
+            [
+                "fab64225a30b61a9",
+                "3d75dd47eb4c2e6b"
+            ]
+        ]
+    },
+    {
+        "id": "3d75dd47eb4c2e6b",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1100,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "6fd96d973cb1b42a",
+        "type": "join",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "mode": "auto",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "useparts": false,
+        "accumulate": true,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 470,
+        "y": 380,
+        "wires": [
+            [
+                "2069fd5d2c7a8a11"
+            ]
+        ]
+    },
+    {
+        "id": "93a147cd83b9f54b",
+        "type": "file",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "filename": "./test.json",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 820,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fc66947a3f5acd44",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "test",
+        "payloadType": "str",
+        "x": 210,
+        "y": 180,
+        "wires": [
+            [
+                "93a147cd83b9f54b"
+            ]
+        ]
+    },
+    {
+        "id": "7421b82abb6af1e5",
+        "type": "watch",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "files": "./test.json",
+        "recursive": "",
+        "x": 840,
+        "y": 100,
+        "wires": [
+            [
+                "93a147cd83b9f54b",
+                "2699ff1fdb14b3c8"
+            ]
+        ]
+    },
+    {
+        "id": "2699ff1fdb14b3c8",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1180,
+        "y": 100,
+        "wires": []
+    }
+]
