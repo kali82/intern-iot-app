@@ -303,5 +303,32 @@
                 "93a147cd83b9f54b"
             ]
         ]
+    },
+    {
+        "id": "4307cad46f9a9403",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 640,
+        "y": 40,
+        "wires": [
+            []
+        ]
     }
 ]
